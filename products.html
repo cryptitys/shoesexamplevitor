@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubra as últimas tendências da moda feminina e masculina na SA FashionStyle. Roupas, bolsas, joias e muito mais. Eleve seu estilo com nossas coleções exclusivas.">
+  <meta name="keywords" content="roupas, moda, bolsas, joias, SA FashionStyle, tendências, acessórios, estilo">
+  <meta name="author" content="SA_FashionStyle">
+
+  <!-- Open Graph (para redes sociais) -->
+  <meta property="og:title" content="SA FashionStyle - Loja Online de Moda">
+  <meta property="og:description" content="Roupas, bolsas, joias e muito mais. Eleve seu estilo com nossas coleções exclusivas.">
+  <meta property="og:image" content="images/logo_block.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://safashionstyle.com">
+
+  <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+
+  <!-- css -->
+  <link rel="stylesheet" href="Style/products.css">
+  <link rel="stylesheet" href="Style/main.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&family=Poppins:wght@300;400;600;700&family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <title>SA FashionStyle | Produtos</title>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header class="container" id="header">
+    <div class="header_top">
+      <div class="header_social">
+        <a href="https://www.instagram.com/sa__fashionstyle" target="_blank" aria-label="Instagram">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a href="https://www.facebook.com/people/SA_Fashionstyle" target="_blank" aria-label="Facebook">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <a href="https://wa.me/201007738790" target="_blank" aria-label="WhatsApp">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+      </div>
+
+      <img src="images/logo_block.jpg" alt="Logo da SA FashionStyle" id="logo" loading="lazy">
+
+      <div class="header_actions">
+        <div id="display_login">
+          <span id="user_name">Amira</span>
+          <a href="#" id="logout" title="Sair" onclick="logout();" aria-label="Sair da conta">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </a>
+        </div>
+        <a href="login.html" title="Entrar" id="login_btn" aria-label="Entrar na conta">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </a>
+        <a href="#" class="icon-cart" aria-label="Abrir carrinho">
+          <ion-icon name="cart-outline"></ion-icon>
+          <span id="cart-counter">0</span>
+        </a>
+      </div>
+    </div>
+
+    <nav>
+      <menu>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="products.html">Loja</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </menu>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <div class="product-header">
+      <div class="menu-icon" onclick="toggleSidebar()" aria-label="Abrir categorias">
+        <ion-icon name="grid-outline"></ion-icon>
+      </div>
+      <div class="product-header-right">
+        <div class="sortBy">
+          <span>Ordenar por:</span>
+          <select id="sort">
+            <option value="AlphabeticallyAZ">Alfabética A-Z</option>
+            <option value="AlphabeticallyZA">Alfabética Z-A</option>
+            <option value="PriceLowHigh">Preço: Menor → Maior</option>
+            <option value="PriceHighLow">Preço: Maior → Menor</option>
+            <option value="Featured">Destaques</option>
+            <option value="Bestselling">Mais vendidos</option>
+          </select>
+        </div>
+
+        <!-- Novo: filtro de preço -->
+        <div class="filter-price">
+          <span>Preço:</span>
+          <input type="number" id="minPrice" placeholder="Mín" min="0">
+          <input type="number" id="maxPrice" placeholder="Máx" min="0">
+          <button onclick="filterByPrice()">Filtrar</button>
+        </div>
+
+        <span id="productCount"></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Barra lateral -->
+      <aside class="aside">
+        <h2>Categorias</h2>
+        <div class="shop_categories">
+          <a href="#" class="categories_link" productCategory="Acessórios">Acessórios</a>
+          <a href="#" class="categories_link" productCategory="Bolsas">Bolsas</a>
+          <a href="#" class="categories_link" productCategory="Joias">Joias</a>
+          <a href="#" class="categories_link" productCategory="Feminino">Feminino</a>
+          <a href="#" class="categories_link" productCategory="Masculino">Masculino</a>
+          <a href="#" class="categories_link" productCategory="Quarto">Quarto</a>
+        </div>
+      </aside>
+
+      <!-- Produtos -->
+      <section class="products">
+        <div class="content">
+          <!-- Produtos carregados via getData.js -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Carrinho -->
+  <div class="cart-section" aria-label="Carrinho de compras">
+    <div class="cart-header">
+      <h2>Carrinho de Compras</h2>
+      <div class="closeCart">
+        <ion-icon name="close-outline" id="closeCart" aria-label="Fechar carrinho"></ion-icon>
+      </div>
+    </div>
+    <div class="cart_products">
+      <!-- Produtos adicionados via JS -->
+    </div>
+    <div class="cart_total">
+      <h3>Total:</h3>
+      <span id="total_price"></span>
+    </div>
+    <div class="btn_control">
+      <button class="viewCart" onclick="viewCart();">Ver Carrinho</button>
+      <button class="checkout" onclick="checkOut();">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="images/logo_block.jpg" alt="Logo da SA FashionStyle" width="140" loading="lazy">
+        <p>O cliente está no coração do nosso modelo de negócio único, que inclui design e exclusividade.</p>
+      </div>
+      <div class="footer-list">
+        <div class="list">
+          <h4>Compras</h4>
+          <ul>
+            <li><a href="#">Loja de Roupas</a></li>
+            <li><a href="#">Sapatos em Alta</a></li>
+            <li><a href="#">Acessórios</a></li>
+            <li><a href="#">Promoções</a></li>
+          </ul>
+        </div>
+        <div class="list">
+          <h4>Atendimento</h4>
+          <ul>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="#">Formas de Pagamento</a></li>
+            <li><a href="#">Entrega</a></li>
+            <li><a href="#">Trocas e Devoluções</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-company-name">
+        © 2024 Todos os direitos reservados. Feito com 
+        <ion-icon name="heart"></ion-icon>
+        por <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" target="_blank" id="author">Amira Alaa</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Botão de subir -->
+  <button id="scrollBtn" aria-label="Voltar ao topo">
+    <ion-icon name="arrow-up-outline" id="btn-up"></ion-icon>
+  </button>
+
+  <!-- Scripts -->
+  <script src="JavaScript/main.js"></script>
+  <script src="JavaScript/cart.js"></script>
+  <script src="JavaScript/getData.js"></script>
+</body>
+            </html>
