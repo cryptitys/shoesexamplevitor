@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubra as últimas tendências da moda feminina e masculina na SA FashionStyle. Compre roupas, bolsas, joias e muito mais.">
+  <meta name="keywords" content="roupas, moda, feminino, masculino, bolsas, joias, SA FashionStyle, últimas tendências, acessórios">
+  <meta name="author" content="SA_FashionStyle">
+  <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="Style/checkout.css">
+
+  <title>SA_FashionStyle - Pedido</title>
+</head>
+<body>
+  <div class="checkout" id="checkout-overlay">
+    <div class="checkout-container">
+      <div id="checkoutIcon" style="width: 200px; height: 200px;"></div>
+      <h4>Obrigado! Seu pedido foi recebido 🎉</h4>
+
+      <div class="order-details">
+        <p><strong>Pedido:</strong> <span id="id_order">1</span></p>
+        <p><strong>Nome:</strong> <span id="client_name">João Silva</span></p>
+        <p><strong>Total:</strong> <span id="total_price">R$ 124,05</span></p>
+        <p><strong>Data:</strong> <span id="order_date"></span></p>
+        <p><strong>Produtos:</strong></p>
+        <ul id="order_items">
+          <li>Camiseta Preta - R$ 59,90</li>
+          <li>Calça Jeans - R$ 64,15</li>
+        </ul>
+      </div>
+
+      <button id="send_whatsapp">📲 Enviar pedido pelo WhatsApp</button>
+      <button id="back_btn" onclick="backHome();">⬅️ Voltar para a loja</button>
+    </div>
+  </div> 
+
+  <script function backHome() {
+  window.location.href = "index.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Simulação de dados — você pode trocar pelos que vêm do carrinho/checkout real
+  const orderId = document.getElementById("id_order").textContent;
+  const clientName = document.getElementById("client_name").textContent;
+  const total = document.getElementById("total_price").textContent;
+  const date = new Date().toLocaleDateString("pt-BR");
+  document.getElementById("order_date").textContent = date;
+
+  // Pega lista de produtos
+  const items = Array.from(document.querySelectorAll("#order_items li"))
+    .map(li => li.textContent)
+    .join("\n");
+
+  // Botão enviar para WhatsApp
+  document.getElementById("send_whatsapp").addEventListener("click", () => {
+    const phone = "5511999999999"; // coloque seu número aqui
+
+    const message = `📦 Novo Pedido
+🆔 Pedido: ${orderId}
+🙍 Cliente: ${clientName}
+💰 Total: ${total}
+📅 Data: ${date}
+🛍️ Produtos:
+${items}`;
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  });
+}); </script>
+</body>
+</html>
