@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra as últimas tendências de moda para mulheres e homens na SA FashionStyle. Compre nossa ampla seleção de roupas, bolsas, joias e mais. Eleve seu estilo com nossas coleções selecionadas.">
+    <meta name="keywords" content="roupas, mulheres, homens, moda, bolsas, joias, SA FashionStyle, últimas tendências, roupas estilosas, acessórios">
+    <meta name="author" content="SA_FashionStyle">
+    <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+    <!-- css -->
+    <link rel="stylesheet" href="Style/productDetails.css">
+    <link rel="stylesheet" href="Style/main.css">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- icon -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- animação -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <title>SA__FashionStyle</title>
+</head>
+<body>
+<header class="container" id="header">
+    <div class="header_top">
+        <div class="header_social">
+            <a href="https://www.instagram.com/sa__fashionstyle/?igsh=eWpjbWFqc3FlbGhl" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="https://www.facebook.com/people/SA_Fashionstyle/100088622209447/?mibextid=LQQJ4d" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="https://wa.me/201007738790" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a>
+        </div>
+        <img src="images/logo_block.jpg" alt="logo da página" id="logo">
+        <div class="header_actions">
+            <div id="display_login">
+                <a href="#" id="logout" onclick="logout();">
+                    <span id="signout">Sair</span>
+                    <ion-icon name="log-out-outline"></ion-icon>
+                </a>
+            </div>
+            <a href="login.html" title="Login" id="login_btn"><ion-icon name="person-circle-outline"></ion-icon></a>
+            <a href="#" class="icon-cart"><ion-icon name="cart-outline"></ion-icon><span id="cart-counter">0</span></a>
+        </div>
+    </div>
+    <nav>
+        <menu>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="products.html">Loja</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </menu>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <div class="productDetails">
+            <div class="images">
+                <img id="product_image" src="" alt="Detalhes do Produto">
+            </div>
+            <div class="details">
+                <span class="category_name"></span>
+                <h2 class="product_name"></h2>
+                <h3 class="product_price"></h3>
+                <p class="product_des"></p>
+                <div class="buttons">
+                    <div class="counts">
+                        <button id="minus" class="counts_btns">-</button>
+                        <input type="number" inputmode="numeric" name="productCount" min="1" step="1" max="999"
+                               class="product_count" id="productCount" value="1">
+                        <button id="plus" class="counts_btns">+</button>
+                    </div>
+                    <button id="btn_add">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- alerta -->
+<div class="toast-overlay" id="toast-overlay">
+    <div class="success-msg">
+        <div id="checkIcon" style="width: 100px; height: 100px;"></div>
+        <h4>Seu item foi adicionado à sacola</h4>
+    </div>
+</div>
+
+<!-- carrinho -->
+<div class="cart-section">
+    <div class="cart-header">
+        <h2>SACOLA DE COMPRAS</h2>
+        <div class="closeCart"><ion-icon name="close-outline" id="closeCart"></ion-icon></div>
+    </div>
+    <div class="cart_products">
+        <!-- produtos adicionados via JS -->
+    </div>
+    <div class="cart_total">
+        <h3>Total:</h3>
+        <span id="total_price"></span>
+    </div>
+    <div class="btn_control">
+        <button class="viewCart" onclick="viewCart();">Ver Carrinho</button>
+        <button class="checkout" onclick="checkOut();">Finalizar Compra</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-logo">
+            <img src="images/logo_block.jpg" alt="logo" width="140">
+            <p>O cliente está no centro do nosso modelo de negócios único, que inclui design.</p>
+        </div>
+        <div class="footer-list">
+            <div class="list">
+                <h4>COMPRAS</h4>
+                <ul>
+                    <li><a href="#">Loja de Roupas</a></li>
+                    <li><a href="#">Sapatos em Alta</a></li>
+                    <li><a href="#">Acessórios</a></li>
+                    <li><a href="#">Promoções</a></li>
+                </ul>
+            </div>
+            <div class="list">
+                <h4>Serviços ao Cliente</h4>
+                <ul>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">Formas de Pagamento</a></li>
+                    <li><a href="#">Entrega</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-company-name">
+            © 2024 Todos os direitos reservados. Feito com <ion-icon name="heart"></ion-icon>
+            por <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" target="_blank" id="author">Amira Alaa</a>
+        </p>
+    </div>
+</footer>
+
+<button id="scrollBtn"><ion-icon name="arrow-up-outline" id="btn-up"></ion-icon></button>
+
+<script src="JavaScript/main.js"></script>
+<script src="JavaScript/getDetails.js"></script>
+<script src="JavaScript/cart.js"></script>
+
+<!-- Checkout via WhatsApp -->
+<script>
+function checkOut() {
+    const phone = "5511999999999"; // Coloque seu WhatsApp aqui
+    const clientName = document.getElementById("user_name")?.textContent || "Cliente";
+    const subtotal = document.getElementById("total_price")?.textContent || "0";
+    const items = Array.from(document.querySelectorAll(".cart_products .cart-item"))
+        .map(item => {
+            const name = item.querySelector(".product-name")?.textContent || "Produto";
+            const qty = item.querySelector(".product-qty")?.textContent || "1x";
+            const price = item.querySelector(".product-price")?.textContent || "";
+            return `${qty} - ${name} ${price}`;
+        })
+        .join("\n");
+    const date = new Date().toLocaleDateString("pt-BR");
+
+    const message = `📦 Novo Pedido\n🙍 Cliente: ${clientName}\n📅 Data: ${date}\n🛍️ Produtos:\n${items}\n💳 Total: ${subtotal}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+  </html>
